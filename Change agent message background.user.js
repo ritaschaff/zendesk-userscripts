@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Agent Message Background
 // @namespace    rschaff
-// @version      v1.0
+// @version      1.01
 // @description  Change the background color of agent messages on Zendesk
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/Change agent message background.user.js

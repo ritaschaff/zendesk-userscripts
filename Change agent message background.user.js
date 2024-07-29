@@ -4,8 +4,8 @@
 // @version      v1.0
 // @description  Change the background color of agent messages on Zendesk
 // @author       Rita Schaff
-// @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/master/Change agent message background.user.js
-// @downloadURL  https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/master/Change agent message background.user.js
+// @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/Change agent message background.user.js
+// @downloadURL  https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/Change agent message background.user.js
 // @include      /https:\/\/liferay-?support[0-9]*.zendesk.com\/agent\/.*/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=zendesk.com
 // @include      /https:\/\/liferay-?support[0-9]*.zendesk.com\/agent\/.*/

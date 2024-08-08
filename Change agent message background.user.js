@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Agent Message Background
 // @namespace    rschaff
-// @version      1.01
+// @version      v1.1
 // @description  Change the background color of agent messages on Zendesk
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/Change agent message background.user.js
@@ -18,19 +18,31 @@
 // ==/UserScript==
 
 //console.log("🐜 "Change agent message background" executed.")
-var bgColor = "#edf7ff"; // change the color here
+// change the color here
+var bgColor = "#edf7ff"; // kale-100
+
+// change the code span/block color here
+var codeColor = "#f8f9f9"; // grey-100
 
 if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
     if (unsafeWindow.location.pathname.indexOf('/agent/') == 0) {
         setInterval(changeAgentMessageBackground, 1000);
 
 /**
- * Changes the gray background to Zendesk kale-100 for agent messages.
+ * Changes the colors for agent messages.
  */
         function changeAgentMessageBackground() {
             var interval = setInterval(function () {
+                // Background color
                 document.querySelectorAll(".sc-rgtb9i-0.hOccVT").forEach(element => {
                     element.style.backgroundColor = bgColor;
+                });
+                // Code color
+                document.querySelectorAll("pre").forEach(element => {
+                    element.style.backgroundColor = codeColor;
+                });
+                document.querySelectorAll("code").forEach(element => {
+                    element.style.backgroundColor = codeColor;
                 });
                 clearInterval(interval);
             }, 1000);

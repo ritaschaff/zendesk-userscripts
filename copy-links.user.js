@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy links
 // @namespace    ritaschaff
-// @version      v1.0
+// @version      v1.2
 // @description  Adds a button to the ticket filter views that copies links
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/copy-links.user.js

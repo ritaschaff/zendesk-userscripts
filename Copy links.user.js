@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy links
 // @namespace    ritaschaff
-// @version      v1.0
+// @version      v1.01
 // @description  Adds a button to the ticket filter views that copies links
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/Copy links.user.js
@@ -80,6 +80,8 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
 
             // Function to copy text to the clipboard using the Clipboard API
             async function copyToClipboardAPI() {
+                
+                // Get the ticket numbers
                 try {
 
                     // Select all the elements that contain the ticket numbers

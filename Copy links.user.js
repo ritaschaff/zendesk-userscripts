@@ -27,7 +27,6 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
          */
         function addCopyLinksButton() {
 
-
             // Create the button element
             const button = document.createElement('button');
             button.setAttribute('data-garden-id', 'buttons.button');
@@ -85,8 +84,8 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                     // Select all the elements that contain the ticket numbers
                     const ticketElements = document.querySelectorAll('[data-test-id="generic-table-cells-id"]');
 
-                    // Array to store all URLs
-                    const urls = [];
+                    // Array to store all links
+                    const links = [];
 
                     // Loop through each element and extract the ticket number
                     ticketElements.forEach(element => {
@@ -94,21 +93,19 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                         const ticketText = element.textContent.trim(); // Get the text content, e.g., "#116128"
                         const ticketNumber = ticketText.replace('#', ''); // Remove the "#" to get just the number
 
-                        // Construct the URL
-                        const url = `https://liferay-support.zendesk.com/agent/tickets/${ticketNumber}`;
+                        // Construct the Markdown link
+                        const markdownLink = `[${ticketNumber}](https://liferay-support.zendesk.com/agent/tickets/${ticketNumber})`;
 
-                        // Add the URL to the array
-                        urls.push(url);
-                        //console.log(urls);
+                        // Add the link to the array
+                        links.push(markdownLink);
                     });
 
-
-                    // Join all the URLs
-                    const allUrls = urls.join('\n');
+                    // Join all the links
+                    const allLinks = links.join('\n');
 
                     // Use the Clipboard API to write text to the clipboard
-                    await navigator.clipboard.writeText(allUrls);
-                    console.log(allUrls);
+                    await navigator.clipboard.writeText(allLinks);
+                    console.log(allLinks);
                     alert('Links copied to clipboard!');
                 } catch (err) {
                     // Handle errors, such as if the clipboard access fails

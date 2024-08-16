@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy links
 // @namespace    ritaschaff
-// @version      v1.0
+// @version      v1.2
 // @description  Adds a button to the ticket filter views that copies links
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/copy-links.user.js
@@ -86,22 +86,16 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                     // Select all the elements that contain the ticket numbers
                     const ticketElements = document.querySelectorAll('[data-test-id="generic-table-cells-id"]');
 
-
                     // Array to store the key-value pairs
                     const ticketData = [];
-
-                    // Array to store all links
-                    const links = [];
-
 
                     // Loop through each element and extract the ticket number
                     ticketElements.forEach(element => {
                         const ticketText = element.textContent.trim(); // Get the text content, e.g., "#116128"
                         const ticketNumber = ticketText.replace('#', ''); // Remove the "#" to get just the number
 
-                        // Construct the Markdown link
-                        const markdownLink = `[${ticketNumber}](https://liferay-support.zendesk.com/agent/tickets/${ticketNumber})`;
-
+                        // Construct the URL
+                        const url = `https://liferay-support.zendesk.com/agent/tickets/${ticketNumber}`;
 
                         // Add the key-value pair to the array
                         ticketData.push({
@@ -139,19 +133,6 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                     // Use the Clipboard API to write text to the clipboard
                     await navigator.clipboard.write([clipboardItems]).then(console.log([clipboardItems]));
                     //alert('Links copied to clipboard!');
-
-
-                        // Add the link to the array
-                        links.push(markdownLink);
-                    });
-
-                    // Join all the links
-                    const allLinks = links.join('\n');
-
-                    // Use the Clipboard API to write text to the clipboard
-                    await navigator.clipboard.writeText(allLinks);
-                    console.log(allLinks);
-                    alert('Links copied to clipboard!');
 
                 } catch (err) {
                     // Handle errors, such as if the clipboard access fails

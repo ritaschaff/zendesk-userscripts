@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Copy links
 // @namespace    ritaschaff
-// @version      v1.2
-// @description  Adds a button to the ticket filter views that copies links
+// @version      v1.21
+// @description  Adds a button to the ticket filter views that copies links to tickets, with the ID/ticket number as the label
 // @author       Rita Schaff
 // @updateURL    https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/copy-links.user.js
 // @downloadURL  https://raw.githubusercontent.com/ritaschaff/zendesk-userscripts/main/copy-links.user.js
@@ -71,6 +71,7 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
             // Append the button to the target div
             if (targetDiv) {
                 targetDiv.appendChild(button);
+                console.info('Copy links: Target div has been found, button has been added to the page.')
             } else {
                 console.info('Copy links: Target div has not been found yet, trying again in 1 second.');
                 return;
@@ -117,13 +118,15 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                         const url = ticket[ticketNumber];
                         plainText += ticketNumber + '\n';
                         htmlContent += `<a href="${url}">${ticketNumber}</a><br>`;
+
                         // Log the key (ticket number) and value (URL) separately
                         //console.log(`Ticket Number: ${ticketNumber}`);
                         //console.log(`URL: ${url}`);
                     });
-
-                    console.log(plainText);
-                    console.log(htmlContent);
+                    // Debugging
+                    //console.log(plainText);
+                    //console.log(htmlContent);
+ 
                     // Create a ClipboardItem with the types of content you want to copy
                     const clipboardItems = new ClipboardItem({
                         'text/plain': new Blob([plainText], { type: 'text/plain' }),
@@ -131,8 +134,8 @@ if (unsafeWindow.location.hostname.indexOf('zendesk.com') != -1) {
                     });
 
                     // Use the Clipboard API to write text to the clipboard
-                    await navigator.clipboard.write([clipboardItems]).then(console.log([clipboardItems]));
-                    //alert('Links copied to clipboard!');
+                    await navigator.clipboard.write([clipboardItems]).then(console.info([clipboardItems]));
+                    alert('Links copied to clipboard!');
 
                 } catch (err) {
                     // Handle errors, such as if the clipboard access fails
